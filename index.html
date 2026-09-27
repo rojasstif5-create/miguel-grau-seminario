@@ -53,6 +53,7 @@
         <a href="#patrono" class="nav-link">Patrono</a>
         <a href="#innovacion" class="nav-link">Innovación</a>
         <a href="#galeria" class="nav-link">Galería</a>
+        <a href="#museo" class="nav-link">Museo</a>
         <a href="#contacto" class="nav-link nav-cta">Contáctanos</a>
       </nav>
 
@@ -717,6 +718,160 @@
       </div>
     </section>
 
+    <!-- ===================== MUSEO DE FOTOS ===================== -->
+    <section class="section museo" id="museo">
+      <div class="container">
+        <div class="section-head section-head--light reveal">
+          <p class="overline">Museo · Archivo histórico</p>
+          <h2>Memoria viva del <span>Miguel Grau</span></h2>
+          <p class="section-sub">
+            Documentos, fotografías y grabados que reconstruyen la historia de la educación y
+            del trabajo en Tambo de Mora y Chincha entre 1875 y 1932: los censos de alfabetismo,
+            las cronologías de las escuelas municipales, los cuadros de matrícula y también el
+            paisaje industrial que dio forma al valle. Haz clic en cualquier pieza para verla
+            en pantalla completa.
+          </p>
+        </div>
+
+        <!--
+          CÓMO AGREGAR MÁS PIEZAS AL ARCHIVO:
+          1. Copia la imagen en la carpeta  img/museo/
+          2. Duplica uno de los bloques <figure class="museo-item"> de abajo
+          3. Cambia la ruta de la imagen, el texto 'alt' y el pie de foto:
+             .museo-titulo  = título de la pieza
+             .museo-texto   = descripción histórica
+        -->
+        <div class="museo-grid" id="museoGrid">
+
+          <figure class="museo-item reveal">
+            <button class="museo-btn" type="button" aria-label="Ampliar documento: Capítulo III, Aspecto Educativo">
+              <img src="img/museo/museo-1.jpg" alt="Página del Capítulo III sobre el aspecto educativo de Tambo de Mora, con el inicio de las escuelas municipales desde 1875" loading="lazy" decoding="async" />
+              <span class="museo-zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
+            <figcaption>
+              <strong class="museo-titulo">Capítulo III · Aspecto Educativo</strong>
+              <span class="museo-texto">Apertura del capítulo sobre la historia de la educación en Tambo de Mora: desde 1875, y tras la elevación del pueblo a distrito, se instalan las primeras escuelas municipales.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="museo-item reveal">
+            <button class="museo-btn" type="button" aria-label="Ampliar documento: Índices de alfabetismo">
+              <img src="img/museo/museo-2.jpg" alt="Tablas estadísticas de alfabetismo de Tambo de Mora en los censos de 1876, 1918 y 1932" loading="lazy" decoding="async" />
+              <span class="museo-zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
+            <figcaption>
+              <strong class="museo-titulo">Índices de alfabetismo</strong>
+              <span class="museo-texto">Cuadros estadísticos con el número de habitantes que sabía leer y escribir en el distrito, levantados en los censos de 1876, 1918 y 1932.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="museo-item reveal">
+            <button class="museo-btn" type="button" aria-label="Ampliar documento: Cronología de Chincha Baja">
+              <img src="img/museo/museo-3.jpg" alt="Cronología de la instrucción en Chincha Baja y El Carmen entre 1885 y 1891, con directores y presupuestos" loading="lazy" decoding="async" />
+              <span class="museo-zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
+            <figcaption>
+              <strong class="museo-titulo">Cronología de Chincha Baja</strong>
+              <span class="museo-texto">Registro cronológico de la instrucción pública: preceptores, renuncias, nombramientos y presupuestos de las escuelas de Chincha Baja y El Carmen, entre 1885 y 1891.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="museo-item reveal">
+            <button class="museo-btn" type="button" aria-label="Ampliar documento: Docentes de Tambo de Mora">
+              <img src="img/museo/museo-4.jpg" alt="Relación de docentes de Tambo de Mora y escuelas de varones y mujeres a las que fueron asignados, entre 1892 y 1922" loading="lazy" decoding="async" />
+              <span class="museo-zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
+            <figcaption>
+              <strong class="museo-titulo">Docentes de Tambo de Mora</strong>
+              <span class="museo-texto">Relación de profesores y preceptoras con la escuela de varones o de mujeres que cada uno atendió, a lo largo de los años 1892 a 1922.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="museo-item reveal">
+            <button class="museo-btn" type="button" aria-label="Ampliar documento: Cuadro de matrícula escolar de 1895">
+              <img src="img/museo/museo-5.jpg" alt="Cuadro manuscrito de matrícula escolar y control de asistencia de 1895" loading="lazy" decoding="async" />
+              <span class="museo-zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
+            <figcaption>
+              <strong class="museo-titulo">Cuadro de matrícula escolar · 1895</strong>
+              <span class="museo-texto">Registro manuscrito de matrícula y control de asistencia que deja constancia de cómo se llevaba la vida de las aulas a finales del siglo XIX.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="museo-item reveal">
+            <button class="museo-btn" type="button" aria-label="Ampliar documento: Premios y normativas municipales">
+              <img src="img/museo/museo-6.jpg" alt="Relación de alumnos destacados en 1897 y bandos municipales de 1900 sobre asistencia escolar obligatoria" loading="lazy" decoding="async" />
+              <span class="museo-zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
+            <figcaption>
+              <strong class="museo-titulo">Premios y normativas municipales</strong>
+              <span class="museo-texto">Listado de los alumnos distinguidos con premio en 1897 y disposiciones municipales de 1900 que hacían obligatoria la asistencia de los niños a la escuela.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="museo-item reveal">
+            <button class="museo-btn" type="button" aria-label="Ampliar fotografía: Vista aérea histórica">
+              <img src="img/museo/museo-7.jpg" alt="Fotografía aérea histórica del entorno geográfico de Tambo de Mora con edificaciones y ruinas antiguas" loading="lazy" decoding="async" />
+              <span class="museo-zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
+            <figcaption>
+              <strong class="museo-titulo">Vista aérea histórica</strong>
+              <span class="museo-texto">Fotografía antigua del entorno geográfico del distrito, con las edificaciones y ruinas arqueológicas que hasta hoy marcan su paisaje.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="museo-item reveal">
+            <button class="museo-btn" type="button" aria-label="Ampliar ilustración: Instalaciones industriales de la fábrica El Triunfo">
+              <img src="img/museo/museo-8.jpg" alt="Grabado antiguo de las instalaciones de la fábrica El Triunfo S.A." loading="lazy" decoding="async" />
+              <span class="museo-zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
+            <figcaption>
+              <strong class="museo-titulo">Instalaciones industriales</strong>
+              <span class="museo-texto">Grabado de las instalaciones de la Fábrica «El Triunfo» S.A., una de las industrias que dio empleo y sostenía la economía del valle de Chincha.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="museo-item reveal">
+            <button class="museo-btn" type="button" aria-label="Ampliar documento: Empresas e industria en Chincha">
+              <img src="img/museo/museo-9.jpg" alt="Reseña de la infraestructura industrial y productiva de Chincha y Tambo de Mora" loading="lazy" decoding="async" />
+              <span class="museo-zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
+            <figcaption>
+              <strong class="museo-titulo">Empresas e industria en Chincha</strong>
+              <span class="museo-texto">Reseña de la infraestructura industrial y de producción del valle, ligada al desarrollo comercial de su puerto.</span>
+            </figcaption>
+          </figure>
+
+        </div>
+
+        <div class="museo-nota reveal">
+          <p>
+            🖼️ ¿Tienes fotografías, grabados o documentos antiguos de la instrucción de Tambo de
+            Mora? Envíalos a la dirección del colegio y los integraremos a este archivo para que
+            las nuevas generaciones conozcan la historia de su propio territorio.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== CONTACTO ===================== -->
     <section class="section contacto" id="contacto">
       <div class="container">
@@ -790,15 +945,34 @@
         <a href="#patrono">Patrono</a>
         <a href="#innovacion">Innovación</a>
         <a href="#galeria">Galería</a>
+        <a href="#museo">Museo</a>
         <a href="#contacto">Contacto</a>
       </nav>
       <p class="footer-quote">"En Miguel Grau, el futuro comienza hoy."</p>
       <p class="footer-legal">© <span id="year"></span> Colegio Miguel Grau Seminario · Hecho con orgullo.</p>
       <p class="footer-credit">
-        Página realizada por <strong>Stif Rojas Ramos</strong> · 5.º «A» · Promoción 2026
+        Página realizada por <strong>Stif Rojas Ramos</strong>, <strong>Romain</strong> y <strong>Dayron</strong> · 5.º «A» · Promoción 2026
       </p>
     </div>
   </footer>
+
+  <!-- ===================== VISOR DE FOTOS (MUSEO) ===================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de fotografías" aria-hidden="true">
+    <button class="lb-close" id="lbClose" type="button" aria-label="Cerrar el visor">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button class="lb-nav lb-prev" id="lbPrev" type="button" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <figure class="lb-figure">
+      <img id="lbImg" src="" alt="" />
+      <figcaption id="lbCaption"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" id="lbNext" type="button" aria-label="Foto siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <p class="lb-counter" id="lbCounter" aria-live="polite"></p>
+  </div>
 
   <!-- Botón volver arriba -->
   <button class="to-top" id="toTop" aria-label="Volver arriba">↑</button>

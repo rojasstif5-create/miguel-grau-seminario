@@ -120,6 +120,105 @@
     });
   });
 
+  /* ---------- Museo de Fotos: visor ampliado (lightbox) ---------- */
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbCounter = document.getElementById('lbCounter');
+  const lbClose = document.getElementById('lbClose');
+  const lbPrev = document.getElementById('lbPrev');
+  const lbNext = document.getElementById('lbNext');
+  const museoBtns = Array.prototype.slice.call(document.querySelectorAll('.museo-btn'));
+
+  if (lb && lbImg && museoBtns.length) {
+    // Colección de fotos del museo (src, alt, título y pie de foto de cada una)
+    const collection = museoBtns.map(function (btn) {
+      const img = btn.querySelector('img');
+      const fig = btn.closest('.museo-item');
+      const cap = fig ? fig.querySelector('figcaption') : null;
+      const tit = cap ? cap.querySelector('.museo-titulo') : null;
+      const txt = cap ? cap.querySelector('.museo-texto') : null;
+      return {
+        src: img ? img.getAttribute('src') : '',
+        alt: img ? img.getAttribute('alt') || '' : '',
+        titulo: tit ? tit.textContent.trim() : (cap ? cap.textContent.trim() : ''),
+        texto: txt ? txt.textContent.trim() : ''
+      };
+    });
+
+    let current = 0;
+    let lastFocused = null;
+
+    function render() {
+      const item = collection[current];
+      if (!item) return;
+      lbImg.setAttribute('src', item.src);
+      lbImg.setAttribute('alt', item.alt);
+      lbCounter.textContent = (current + 1) + ' / ' + collection.length;
+
+      // Título y descripción van en nodos aparte para poder estilizarlos
+      lbCaption.textContent = '';
+      const strong = document.createElement('strong');
+      strong.className = 'lb-titulo';
+      strong.textContent = item.titulo;
+      lbCaption.appendChild(strong);
+      if (item.texto) {
+        const span = document.createElement('span');
+        span.className = 'lb-texto';
+        span.textContent = item.texto;
+        lbCaption.appendChild(span);
+      }
+
+      // En relieves o pantallas pequeñas se ve una sola foto a la vez
+      const soloUna = window.matchMedia('(max-width: 620px)').matches;
+      lbPrev.hidden = soloUna;
+      lbNext.hidden = soloUna;
+    }
+
+    function open(index) {
+      current = (index + collection.length) % collection.length;
+      lastFocused = document.activeElement;
+      render();
+      lb.classList.add('is-open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      lbClose.focus();
+    }
+
+    function close() {
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    function step(delta) {
+      current = (current + delta + collection.length) % collection.length;
+      render();
+    }
+
+    museoBtns.forEach(function (btn, i) {
+      btn.addEventListener('click', function () { open(i); });
+    });
+
+    lbClose.addEventListener('click', close);
+    lbPrev.addEventListener('click', function () { step(-1); });
+    lbNext.addEventListener('click', function () { step(1); });
+
+    // Clic en el fondo oscuro (fuera de la foto) cierra el visor
+    lb.addEventListener('click', function (e) {
+      if (e.target === lb) close();
+    });
+
+    // Teclado: Esc cierra, flechas navegan
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') step(-1);
+      else if (e.key === 'ArrowRight') step(1);
+    });
+  }
+
   /* ---------- Año actual en el pie ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

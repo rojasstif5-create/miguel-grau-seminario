@@ -1233,6 +1233,220 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 .gallery-item.fallback figcaption { z-index: 2; }
 
 /* ==========================================================================
+   MUSEO DE FOTOS
+   ========================================================================== */
+.museo {
+  position: relative;
+  background: var(--navy-900);
+  background-image:
+    radial-gradient(760px 420px at 12% 0%, rgba(201, 162, 39, 0.12), transparent 62%),
+    radial-gradient(680px 420px at 92% 100%, rgba(22, 48, 91, 0.6), transparent 66%);
+  border-top: 1px solid var(--line);
+}
+.museo .section-head { margin-bottom: 48px; }
+.museo .section-sub { color: rgba(255, 255, 255, 0.72); max-width: 64ch; }
+
+/* Muro de fotos: columnas tipo masonry para respetar la proporción real */
+.museo-grid {
+  columns: 3;
+  column-gap: 18px;
+}
+
+.museo-item {
+  break-inside: avoid;
+  margin: 0 0 18px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--navy-800);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.34);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.museo-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201, 162, 39, 0.5);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.46);
+}
+
+.museo-btn {
+  display: block;
+  width: 100%;
+  position: relative;
+  cursor: zoom-in;
+  line-height: 0;
+}
+.museo-btn img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1), filter 0.4s ease;
+}
+.museo-item:hover .museo-btn img { transform: scale(1.06); filter: brightness(0.82); }
+
+.museo-zoom {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--white);
+  background: rgba(6, 13, 26, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transform: scale(0.75);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.museo-item:hover .museo-zoom,
+.museo-btn:focus-visible .museo-zoom { opacity: 1; transform: scale(1); }
+.museo-zoom svg { width: 17px; height: 17px; }
+
+/* Pie de foto: título en dorado + descripción histórica */
+.museo-item figcaption {
+  display: block;
+  position: relative;
+  padding: 14px 16px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.museo-item figcaption::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 16px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.museo-titulo {
+  display: block;
+  margin: 0 0 6px;
+  padding-left: 17px;
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: var(--gold);
+}
+.museo-texto {
+  display: block;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.museo-nota {
+  margin-top: 44px;
+  padding: 20px 24px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed rgba(201, 162, 39, 0.4);
+  background: rgba(201, 162, 39, 0.07);
+}
+.museo-nota p { color: rgba(255, 255, 255, 0.78); font-size: 0.92rem; }
+
+/* ---------- Visor de fotos (lightbox) ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 76px;
+  background: rgba(4, 9, 18, 0.95);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.lightbox.is-open { opacity: 1; visibility: visible; }
+
+.lb-figure {
+  margin: 0;
+  max-width: min(1080px, 100%);
+  text-align: center;
+  animation: zoomIn 0.35s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+.lb-figure img {
+  max-width: 100%;
+  max-height: 78vh;
+  width: auto;
+  height: auto;
+  margin-inline: auto;
+  border-radius: 12px;
+  background: var(--navy-800);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+.lb-figure figcaption {
+  margin-top: 18px;
+  max-width: 62ch;
+  margin-inline: auto;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+.lb-titulo {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.lb-texto {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.lb-counter {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
+.lb-close,
+.lb-nav {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+.lb-close:hover,
+.lb-nav:hover {
+  background: var(--gold);
+  border-color: transparent;
+  color: var(--navy-950);
+}
+.lb-close svg, .lb-nav svg { width: 20px; height: 20px; }
+
+.lb-close { top: 22px; right: 22px; width: 44px; height: 44px; }
+.lb-nav { top: 50%; transform: translateY(-50%); width: 48px; height: 48px; }
+.lb-prev { left: 16px; }
+.lb-next { right: 16px; }
+.lb-nav:hover { transform: translateY(-50%) scale(1.08); }
+.lb-close:hover { transform: scale(1.08); }
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================================================
    CONTACTO
    ========================================================================== */
 .contacto { background: var(--white); border-top: 1px solid var(--line); }
@@ -1399,6 +1613,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
   .levels-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .museo-grid { columns: 2; }
   .nosotros-grid, .innovacion-grid, .patrono-grid { grid-template-columns: 1fr; gap: 48px; }
   .innovacion-visual { max-width: 520px; }
   .patrono-media { max-width: 380px; }
@@ -1446,6 +1661,14 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
   .historia-details { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
   .gallery-item--main { grid-column: span 2; grid-row: span 1; }
+  .museo-grid { columns: 1; }
+  .lightbox { padding: 24px 18px 64px; }
+  .lb-nav { top: auto; bottom: 18px; transform: none; }
+  .lb-prev { left: 18px; }
+  .lb-next { right: 18px; }
+  .lb-nav:hover { transform: scale(1.08); }
+  .lb-figure img { max-height: 72vh; }
+  .lb-counter { bottom: 26px; }
   .tabs { width: 100%; }
   .tab { flex: 1; text-align: center; padding: 11px 12px; }
   .quote-card { padding: 36px 28px; }
